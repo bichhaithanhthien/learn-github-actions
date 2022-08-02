@@ -1,0 +1,19 @@
+name: actions
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: build
+        echo 'building'
+
+  publish:
+    needs: [build]
+    runs-on: ubuntu-latest
+    steps:
+      - name: publish
+        echo 'publishing'
