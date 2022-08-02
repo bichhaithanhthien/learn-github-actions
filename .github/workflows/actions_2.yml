@@ -2,7 +2,7 @@ name: actions
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   build:
@@ -17,3 +17,6 @@ jobs:
     steps:
       - name: publish
         run: echo 'publishing'
+        uses: c-py/action-dotenv-to-setenv@v2
+        with:
+          env-file: .env
