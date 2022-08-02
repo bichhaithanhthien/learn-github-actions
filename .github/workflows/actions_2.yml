@@ -10,6 +10,13 @@ jobs:
     steps:
       - name: build
         run: echo 'building'
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - run: yarn
+      - run: yarn test
 
   publish:
     needs: [build]
