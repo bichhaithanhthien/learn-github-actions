@@ -19,5 +19,6 @@ jobs:
       TEST_2: true
     steps:
       - name: publish
-        run: echo "secrets.TESTING ${{ secrets.TESTING }}"
-        run: echo "env TEST_2 ${{ env.TESTING }}"
+        run: echo 'publishing'
+      - run: echo "secrets.TESTING ${{ secrets.TESTING }}"
+      - run: echo "env TEST_2 ${{ env.TESTING }}"
