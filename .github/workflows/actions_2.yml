@@ -17,4 +17,4 @@ jobs:
     environment: staging
     steps:
       - name: publish
-        run: echo "${{ env.TESTING }}"
+        run: echo "${{ secrets.TESTING }}"
