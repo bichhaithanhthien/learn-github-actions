@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: staging
     env:
-      TEST_2: true
+      TEST_2: ${{ secrets.TESTING }}
     steps:
       - name: publish
         run: echo 'publishing'
