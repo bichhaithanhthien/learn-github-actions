@@ -15,6 +15,9 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     environment: staging
+    env:
+      TEST_2: true
     steps:
       - name: publish
-        run: echo "${{ secrets.TESTING }}"
+        run: echo "secrets.TESTING ${{ secrets.TESTING }}"
+        run: echo "env TEST_2 ${{ env.TESTING }}"
