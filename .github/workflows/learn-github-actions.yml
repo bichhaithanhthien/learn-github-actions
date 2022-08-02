@@ -1,5 +1,7 @@
 name: learn-github-actions
-on: [push]
+push:
+    branches:
+      - main
 jobs:
   print_context:
     runs-on: ubuntu-latest
