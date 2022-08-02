@@ -2,7 +2,7 @@ name: actions
 on:
   push:
     branches:
-      - develop
+      - main
 
 jobs:
   build:
@@ -14,8 +14,8 @@ jobs:
   publish:
     needs: [build]
     runs-on: ubuntu-latest
+    environment: staging
     steps:
       - name: publish
-        uses: c-py/action-dotenv-to-setenv@v2
-        with:
-          env-file: .env
+        run: echo 'publishing'
+        run: echo "${{ env.TESTING }}"
