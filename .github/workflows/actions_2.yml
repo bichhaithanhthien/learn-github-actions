@@ -2,7 +2,7 @@ name: actions
 on:
   push:
     branches:
-      - main
+      - develop
 
 jobs:
   build:
@@ -10,10 +10,30 @@ jobs:
     steps:
       - name: build
         run: echo 'building'
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+          cache: 'yarn'
+      - run: yarn
+      - run: yarn build:dev
 
   publish:
     needs: [build]
     runs-on: ubuntu-latest
+    environment: staging
+    env:
+      TEST_2: ${{ secrets.TESTING }}
     steps:
       - name: publish
         run: echo 'publishing'
+      - run: echo "secrets.TESTING ${{ secrets.TESTING }}"
+      - run: echo "env TEST_2 ${{ env.TESTING }}"
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "action_state=yellow" >> $GITHUB_ENV
+      - name: Use the value
+        id: step_two
+        run: |
+          echo "${{ env.action_state }}" # This will output 'yellow'
