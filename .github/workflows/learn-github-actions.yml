@@ -11,6 +11,7 @@ jobs:
           EVENT_CONTEXT: ${{ toJSON(github.event) }}
         run: |
           echo $EVENT_CONTEXT
+          echo ${{ github.actor }}
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
